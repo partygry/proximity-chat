@@ -1,0 +1,15 @@
+github.com/gomodule/redigo v2.0.1-0.20180627144507-2cd21d9966bf+incompatible h1:QJ4V3LjaRe/6NKoaaj2QzQZcezt5gNXdPv0axxS4VNA=
+github.com/gomodule/redigo v2.0.1-0.20180627144507-2cd21d9966bf+incompatible/go.mod h1:B4C85qUVwatsJoIUNIfCRsp7qO0iAmpGFZ4EELWSbC4=
+github.com/gorilla/websocket v1.4.0 h1:WDFjx/TMzVgy9VdMMQi2K2Emtwi2QcUQsztZ/zLaH/Q=
+github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
+github.com/paulbellamy/ratecounter v0.2.1-0.20170719102518-a803f0e4f071 h1:lL9DHDiy6y/YcERO1Baji6ed0S2XisLARdeWRs2ZHC8=
+github.com/paulbellamy/ratecounter v0.2.1-0.20170719102518-a803f0e4f071/go.mod h1:Hfx1hDpSGoqxkVVpBi/IlYD7kChlfo5C6hzIHwPqfFE=
+github.com/tidwall/gjson v1.1.3 h1:u4mspaByxY+Qk4U1QYYVzGFI8qxN/3jtEV0ZDb2vRic=
+github.com/tidwall/gjson v1.1.3/go.mod h1:c/nTNbUr0E0OrXEhq1pwa8iEgc2DOt4ZZqAt1HtCkPA=
+github.com/tidwall/match v1.0.0 h1:Ym1EcFkp+UQ4ptxfWlW+iMdq5cPH5nEuGzdf/Pb7VmI=
+github.com/tidwall/match v1.0.0/go.mod h1:LujAq0jyVjBy028G1WhWfIzbpQfMO8bBZ6Tyb0+pL9E=
+github.com/tidwall/sjson v1.0.0 h1:hOrzQPtGKlKAudQVmU43GkxEgG8TOgKyiKUyb7sE0rs=
+github.com/tidwall/sjson v1.0.0/go.mod h1:bURseu1nuBkFpIES5cz6zBtjmYeOQmEESshn7VpF15Y=
+github.com/tidwall/tile38 v0.0.0-20180822232627-3a6f366955ab/go.mod h1:AnHqeHPrInU7z0N6U4ymuHQIIrn3+gkf461LD3E9I28=
+github.com/tile38/msgkit v0.0.0-20180821220940-cd35bb7e8b02 h1:C5+EScxuQtQy28fJv7+B+ABTgItPx3B4h61W8pQqeuo=
+github.com/tile38/msgkit v0.0.0-20180821220940-cd35bb7e8b02/go.mod h1:l8MLWTrRsJvlkdoLXcbPXKzv+sLxSPDVAFrwqi2EqOk=

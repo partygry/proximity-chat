@@ -2,7 +2,7 @@
 const expires = 4000;            // markers are auto removed after 5 seconds
 const minUpdateFrequency = 200;  // minimum interval duration for posn updates
 const maxUpdateFrequency = 1500; // maximum interval duration for posn updates
-const viewportFrequency = 500;   // 
+const viewportFrequency = 500;   //
 
 const lineWidth = 4;
 const messageDotSize = 4;
@@ -47,10 +47,11 @@ loadChat();
 
 
 // Load the map
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2R3b2xmZTMyIiwiYSI6ImNqa2JxdHcxOTAzMHQza241dmo4NTR6cmwifQ.JP0VMlXnDthDlYp0mVViXA';
+mapboxgl.accessToken = 'pk.eyJ1IjoicGFydHlncnkiLCJhIjoiY2t3NDJhZDR3MDJobDJ1bGo5dTJ0MmhlNCJ9.jgJdDR-pEELVCXKvUgcw2A';
 let map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/sdwolfe32/cjkvl0av304r42sphvsm0odyw',
+    style: 'mapbox://styles/mapbox/light-v10',
+    //style: 'mapbox://styles/sdwolfe32/cjkvl0av304r42sphvsm0odyw',
     center: me.properties.center,
     zoom: me.properties.zoom,
     keyboard: false,
@@ -81,7 +82,7 @@ map.on('load', function(){
     // start the animations
     requestAnimationFrame(draw);
 
-    // Continually send the client state. The 100ms is only a hint, sendMe() 
+    // Continually send the client state. The 100ms is only a hint, sendMe()
     // manages the actual throttling.
     setInterval(function(){ sendMe(true); }, 100);
     setInterval(function(){ expireMarkers(); }, 1000);
@@ -133,15 +134,15 @@ map.on('load', function(){
         trackUserLocation: true,
         showUserLocation: false
     });
-    
+
     gc.on('geolocate', function (loc) {
         me.geometry.coordinates = [loc.coords.longitude, loc.coords.latitude];
         dragMarker.setLngLat(me.geometry.coordinates);
         storeMe();
         sendMe();
-        
+
     });
-    
+
     gc.on('trackuserlocationstart', function() {
         dragMarker.dragDisabled = true;
     });
@@ -151,7 +152,7 @@ map.on('load', function(){
     });
 
     //let data = "./fences/convention-center.geojson"
-    
+
 
 
     map.addLayer({
@@ -194,7 +195,7 @@ map.on('load', function(){
         let mapel = document.getElementById('map');
         // mapel.style.left = boxel.offsetWidth+'px';
         // mapel.style.width = (document.body.offsetWidth-boxel.offsetWidth)+'px';
-        mcanvas = map.getCanvas();  
+        mcanvas = map.getCanvas();
         canvas.width = mapel.offsetWidth * window.devicePixelRatio;
         canvas.height = mapel.offsetHeight * window.devicePixelRatio;
         canvas.style.width = mapel.offsetWidth+"px";
@@ -208,9 +209,9 @@ map.on('load', function(){
 // window.addEventListener('mousemove', function(ev){
 //     let rect = nameEl.getBoundingClientRect();
 //     if (
-//         ev.clientY > rect.top && 
-//         ev.clientY < rect.top+rect.height && 
-//         ev.clientX > rect.left && 
+//         ev.clientY > rect.top &&
+//         ev.clientY < rect.top+rect.height &&
+//         ev.clientX > rect.left &&
 //         ev.clientX < rect.left+rect.width
 //     ){
 //         nameEl.style.opacity = 1.0
@@ -218,7 +219,7 @@ map.on('load', function(){
 //         nameEl.style.opacity = 0.5
 //     }
 
-    
+
 //     // console.log(, ev.clientY, rect.left, rect.top)
 // });
 
@@ -238,7 +239,7 @@ function displayClientInfo(){
     window.setInterval(function () {
         document.getElementById('name').innerText = 'Name : ' + me.properties.name;
         document.getElementById('clientid').innerText = 'Client ID : ' + me.id;
-        document.getElementById('position').innerText = 'Position : ' + 
+        document.getElementById('position').innerText = 'Position : ' +
             me.geometry.coordinates[0].toFixed(8)+','+me.geometry.coordinates[1].toFixed(8);
     }, 100);
 }
@@ -338,7 +339,7 @@ function createDragMarker(coords){
 }
 
 
-// createMarker creates a marker and adds it to the markers hashmap. 
+// createMarker creates a marker and adds it to the markers hashmap.
 function createMarker(feature, anim){
     let el = document.createElement('div');
     el.style.width = '32px';
@@ -622,7 +623,7 @@ function randCoords() {
     }
 }
 
-// loadMe attempts to retrieve a previously stored location from sessionStorage, 
+// loadMe attempts to retrieve a previously stored location from sessionStorage,
 // otherwise it generates and sets a new one
 function loadMe() {
     me = JSON.parse(sessionStorage.getItem('location'));
@@ -663,11 +664,11 @@ function sendMe(throttled) {
     let now = new Date().getTime();
     let send = !throttled;
     let msg;
-    if (!send){ 
+    if (!send){
         if (now > lastTS+maxUpdateFrequency){
             send = true
         } else if (now > lastTS+minUpdateFrequency) {
-            msg = JSON.stringify(me); 
+            msg = JSON.stringify(me);
             if (msg != lastMsg){
                 send = true
             }
@@ -728,9 +729,9 @@ function updateChat(feature, text, anim) {
     dotCanvas.style.height = dotSize+'px';
     dotCanvas.style.display = 'inline';
     dotCanvas.style.marginRight = '5px';
-    drawMarkerDot(dotCanvas.getContext('2d'), 
-        dotSize*window.devicePixelRatio/2, dotSize*window.devicePixelRatio/2, 
-        dotSize, 3, 
+    drawMarkerDot(dotCanvas.getContext('2d'),
+        dotSize*window.devicePixelRatio/2, dotSize*window.devicePixelRatio/2,
+        dotSize, 3,
         feature.properties.color, 1, false);
     el.appendChild(dotCanvas);
 
@@ -744,7 +745,7 @@ function updateChat(feature, text, anim) {
         nameEl.style.fontWeight = 'bold';
         nameEl.innerText = feature.properties.name+": ";
         el.appendChild(nameEl);
-        
+
     }
 
     textEl.innerText = text;
@@ -753,7 +754,7 @@ function updateChat(feature, text, anim) {
     textEl.style.top = '-3px';
     el.appendChild(textEl);
 
-    
+
 
     // add to message box
     let chatArea = document.getElementById('chat-messages');
@@ -800,7 +801,7 @@ function storeChat(feature, text){
 function loadChat(){
     let chatArea = document.getElementById('chat-messages');
     chatArea.addEventListener("scroll", function(){
-        chatArea.autoScroll = 
+        chatArea.autoScroll =
             chatArea.scrollTop == chatArea.scrollHeight - chatArea.clientHeight;
     })
     let count = parseInt(sessionStorage.getItem('chat-count'))||0;
@@ -870,7 +871,7 @@ function p(x) {
 function markerXY(marker) {
     let rect = marker.getElement().getBoundingClientRect();
     let mapel = document.getElementById('map');
-    
+
     return {
         x: p(rect.left + rect.width/2 - mapel.offsetLeft),
         y: p(rect.top + rect.height/2)
@@ -882,7 +883,7 @@ function draw(time) {
     requestAnimationFrame(draw);
     TWEEN.update(time);
 
-    
+
 
     let all = []; // list off all markers with the me-marker at the end.
     let memarker;
@@ -927,7 +928,7 @@ function draw(time) {
     for (let i=0;i<all.length;i++){
         drawLabel(ctx, all[i], true);
     }
-    
+
     let a = markerXY(memarker);
     let mr = memarker.getElement().getBoundingClientRect();
     nameEl.style.top = (mr.top - nameEl.offsetHeight) + 'px';
@@ -953,7 +954,7 @@ function drawLabel(ctx, marker, overlay){
         ctx.fillStyle = 'rgba(47,64,75,'+(marker.overFade)+')'
         //ctx.strokeStyle = 'rgba(255,255,255,'+(0.5*marker.overFade)+')'
         //ctx.lineWidth = p(lineWidth)/1.8;
-        //ctx.strokeText(text, a.x-measure.width/2, a.y-(markerSize+lineWidth*3)*marker.fade);    
+        //ctx.strokeText(text, a.x-measure.width/2, a.y-(markerSize+lineWidth*3)*marker.fade);
     }else{
         ctx.fillStyle = '#809bad';
     }
@@ -964,9 +965,9 @@ function drawConnection(ctx, marker, memarker){
     if (!marker.nearbyFade){
         return;
     }
-    
+
     const innerSize = markerSize*.75;
-    
+
     // get some calcs to the me-marker
     let a = markerXY(marker);
     let b = markerXY(memarker);
@@ -974,7 +975,7 @@ function drawConnection(ctx, marker, memarker){
 
     let fadeA = marker.fade*marker.nearbyFade;
     let fadeB = memarker.fade;
-    
+
     let c;
     ctx.beginPath();
     //ctx.fillStyle = "rgba(255,255,255,0.5)";
@@ -1047,7 +1048,7 @@ function drawMarker(ctx, marker, memarker){
     }else {
         drawMarkerDot(ctx, a.x, a.y,
             markerSize, lineWidth,
-            color, marker.fade, 
+            color, marker.fade,
             marker == memarker);
     }
 }
@@ -1100,5 +1101,5 @@ function drawGopher(ctx, x, y, color, fade, isme){
     //     ctx.arc(x, y+height/6, p(lineWidth/2)*fade, 0, 2*Math.PI);
     //     ctx.fill();
     // }
-    
+
 }
